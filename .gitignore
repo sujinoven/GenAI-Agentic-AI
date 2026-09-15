@@ -1,0 +1,140 @@
+# =========================================================
+# Python
+# =========================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# =========================================================
+# Jupyter Notebook
+# =========================================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Jupyter / IPython configuration
+profile_default/
+ipython_config.py
+
+# =========================================================
+# IDEs / Editors
+# =========================================================
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================================================
+# OS generated files
+# =========================================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# =========================================================
+# Python tooling / caches
+# =========================================================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# =========================================================
+# Python packaging
+# =========================================================
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+wheels/
+
+# =========================================================
+# Machine Learning datasets
+# =========================================================
+# Ignore datasets by default
+data/*
+
+# But allow the data folder itself
+!data/
+
+# If you specifically want to keep a tiny sample dataset:
+# !data/sample.csv
+
+# Common dataset formats
+*.tsv
+*.json
+*.jsonl
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.db
+*.sqlite
+*.sqlite3
+*.zip
+
+# =========================================================
+# ML model files / checkpoints
+# =========================================================
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.joblib
+*.sav
+*.pkl
+
+# =========================================================
+# Generated ML outputs
+# =========================================================
+outputs/
+models/
+checkpoints/
+runs/
+wandb/
+mlruns/
+
+# =========================================================
+# Logs
+# =========================================================
+*.log
+logs/
+
+# =========================================================
+# Temporary files
+# =========================================================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# =========================================================
+# Secrets / credentials
+# =========================================================
+*.pem
+*.key
+*.crt
+credentials.json
+secrets.json
+service-account*.json
