@@ -1,0 +1,51 @@
+PROITBRIDGE HR ASSISTANT - LIVE DEMO QUESTIONS
+
+STEP 1 - PURE RAG
+1. What is the casual leave policy?
+2. How many consecutive casual leave days are allowed?
+3. What is the standard probation period?
+4. When is salary normally credited?
+5. What is the remote work internet allowance policy?
+6. What are the core working hours for hybrid and remote employees?
+
+STEP 2 - TOOL 1 - LEAVE REQUEST VALIDATION
+1. I am a confirmed employee. Can I take 2 days of Earned Leave with 10 working days notice?
+2. Can I take 4 days of casual leave in a row?
+3. Can I take 5 days of Earned Leave during probation?
+4. I am a confirmed employee. Can I take 6 days of Earned Leave with 10 days notice?
+
+STEP 3 - TOOL 2 - EARNED LEAVE ACCRUAL
+1. How much Earned Leave will I accrue after 6 completed months?
+2. How much Earned Leave will I accrue after -2 completed months?
+
+STEP 4 - TOOL 3 - PROBATION END CALCULATION
+1. I joined on 2026-01-01. When does my probation end?
+2. When does my probation end if I joined on 15-08-2026?
+
+STEP 5 - TOOL 4 - PAYROLL DEADLINE
+1. If today is 2026-08-25, has the payroll cut-off passed and when will my salary be credited?
+2. What is the payroll deadline for 15-08-2026?
+
+STEP 6 - TOOL 5 - REIMBURSEMENT CLAIM VALIDATION
+1. I have an approved travel request and scanned bills. Can I submit a Rs.5,000 claim 10 days after returning?
+2. Can I submit a Rs.5,000 reimbursement claim without an approved travel request?
+3. I have an approved travel request and scanned bills. Can I submit my claim 50 days after returning?
+4. I have an approved travel request and scanned bills. Can I submit my claim 20 days after returning?
+
+STEP 7 - TOOL 6 - REMOTE WORK ALLOWANCE
+1. Calculate my internet allowance for a hybrid work model.
+2. Calculate my internet allowance for remote-first.
+3. Calculate my internet allowance for an on-site work model.
+
+STEP 8 - TOOL 7 - TRAVEL DAILY ALLOWANCE
+1. What is the daily travel allowance for Grade 3 in a metro city?
+2. What is the daily travel allowance for Grade 5 travelling to Europe or the Americas?
+3. What is the daily travel allowance for Grade 6 in a metro city?
+
+FINAL QUICK DEMO ORDER
+1. What is the casual leave policy?
+2. How many consecutive casual leave days are allowed?
+3. Can I take 4 days of casual leave in a row?
+4. How much Earned Leave will I accrue after 6 completed months?
+5. Can I take 5 days of Earned Leave during probation?
+6. What is the daily travel allowance for Grade 3 in a metro city?
