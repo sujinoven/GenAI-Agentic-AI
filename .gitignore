@@ -358,3 +358,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 >>>>>>> 0eb2c3f0e1199a340b518cce2d67d7e71d6e39c4
+
+# Generated Chroma index
+chroma_db/
