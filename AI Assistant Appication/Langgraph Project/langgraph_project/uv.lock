@@ -820,6 +820,7 @@ source = { editable = "." }
 dependencies = [
     { name = "langchain" },
     { name = "langchain-community" },
+    { name = "langchain-core" },
     { name = "langchain-openai" },
     { name = "langgraph" },
     { name = "numpy" },
@@ -831,6 +832,7 @@ dependencies = [
 requires-dist = [
     { name = "langchain", specifier = ">=1.4.6" },
     { name = "langchain-community", specifier = ">=0.4.2" },
+    { name = "langchain-core", specifier = ">=1.6.12" },
     { name = "langchain-openai", specifier = ">=1.7.2" },
     { name = "langgraph", specifier = ">=1.2.16" },
     { name = "numpy", specifier = ">=2.5.4" },

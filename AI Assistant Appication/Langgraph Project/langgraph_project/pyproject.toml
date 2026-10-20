@@ -10,6 +10,7 @@ requires-python = ">=3.12"
 dependencies = [
     "langchain>=1.4.6",
     "langchain-community>=0.4.2",
+    "langchain-core>=1.6.12",
     "langchain-openai>=1.7.2",
     "langgraph>=1.2.16",
     "numpy>=2.5.4",
