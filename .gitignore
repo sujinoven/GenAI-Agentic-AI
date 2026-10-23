@@ -9,6 +9,10 @@ __pycache__/
 *.lance
 *.txn
 
+# LanceDB vector database
+tmp/lancedb/
+*.lance/
+
 # Virtual environments
 .venv/
 venv/
