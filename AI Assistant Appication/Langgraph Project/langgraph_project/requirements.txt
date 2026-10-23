@@ -1,7 +1,0 @@
-pandas
-numpy
-langchain
-langgraph
-PyPDFLoader
-langchain_core
-langchain_community
