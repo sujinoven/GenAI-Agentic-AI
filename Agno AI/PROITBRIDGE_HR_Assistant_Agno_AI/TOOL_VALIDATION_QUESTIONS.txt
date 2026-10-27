@@ -1,0 +1,61 @@
+====================================================================
+PROITBRIDGE HR ASSISTANT (Agno Multi-Agent · HR Manager Team) — DEMO
+Sample employee: Arun Kumar (PIB-E1042, Senior Software Engineer, Grade 3, Confirmed)
+====================================================================
+
+
+FLAGSHIP — THE FULL RESIGNATION REQUEST  (-> all four HR specialists + synthesis)
+1. I am planning to resign from PROITBRIDGE. Based on my role, notice period,
+   leave balance, salary, pending reimbursements and company policies, calculate
+   my final settlement, identify everything I need to complete before my last
+   working day, and prepare my resignation and HR handover documents.
+
+
+HR POLICY AGENT   (Team -> HR Policy Agent -> Handbook)
+1. What is the notice period for a confirmed employee?
+2. How is Earned Leave encashed on separation?
+3. Can I take leave during my notice period?
+4. What are the resignation steps in the handbook?
+
+
+PAYROLL AGENT   (Team -> Payroll Agent -> record + calculator + handbook)
+1. Calculate my full and final settlement.
+2. Calculate my Earned Leave encashment.
+3. What is my notice shortfall buy-out if I serve 45 days instead of 60?
+4. What is my final-month salary for 19 days worked?
+
+
+COMPLIANCE AGENT   (Team -> Compliance Agent -> Handbook + record)
+1. What must I complete before my last working day?
+2. Which clearances do I need, and which assets do I return?
+3. When will I receive my relieving letter?
+
+
+DOCUMENTATION AGENT   (Team -> Documentation Agent)
+1. Draft my resignation letter to my reporting manager.
+2. Prepare my handover checklist.
+3. Write a short HR communication email about my exit.
+
+
+HR RESEARCH AGENT   (Team -> HR Research Agent -> web; external only)
+1. What is the typical notice period in the Indian IT industry?
+2. How does Form 16 / PF withdrawal generally work?
+
+
+GENERAL HR — the 7 tools, beyond the resignation
+1. How much Earned Leave will I accrue after 6 completed months?   (calculate_earned_leave_accrual -> 9)
+2. Can I take 4 days of casual leave in a row?                     (validate_leave_request -> no, max 3)
+3. When does probation end if I joined on 2026-01-01?              (calculate_probation_end)
+4. Travel daily allowance for Grade 3 in a metro city?             (calculate_travel_daily_allowance -> 1600)
+5. Internet allowance for a remote-first employee?                 (calculate_remote_work_allowance -> 2500)
+
+
+====================================================================
+FINAL QUICK DEMO ORDER
+====================================================================
+1. The full resignation request (flagship — all specialists)
+2. What is the notice period for a confirmed employee, and how is EL encashed?  (Policy)
+3. Calculate my EL encashment and notice shortfall buy-out.                      (Payroll)
+4. What must I complete before my last working day?                             (Compliance)
+5. Draft my resignation letter and handover checklist.                          (Documentation)
+6. What is the typical notice period in Indian IT?                              (Research - external)

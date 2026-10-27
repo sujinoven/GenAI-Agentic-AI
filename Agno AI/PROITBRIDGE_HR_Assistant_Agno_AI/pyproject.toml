@@ -1,0 +1,16 @@
+[project]
+name = "proitbridge-hr-assistant-agno-v2"
+version = "2.0.0"
+description = "PROITBRIDGE HR Assistant — Agno multi-agent Team (Policy + Operations + Research) with AgentOS tracing."
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "agno[os]==3.0.10",
+    "ddgs>=9.16.0",
+    "lancedb>=0.40.0",
+    "openai>=3.31.0",
+    "pypdf>=6.20.1",
+    "python-dotenv>=1.2.4",
+    "sqlalchemy[asyncio]>=2.1.4",
+]
+[tool.uv]
+package = false

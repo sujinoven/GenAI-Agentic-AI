@@ -1,0 +1,13 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Runtime artefacts (rebuilt on first run): vector store + AgentOS/traces db
+tmp/
+*.db
+*.lance

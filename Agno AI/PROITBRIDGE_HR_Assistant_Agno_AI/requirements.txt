@@ -1,0 +1,7 @@
+agno[os]==3.0.10       # pinned on purpose — the code targets the Agno 3.0.x API
+openai
+lancedb
+pypdf
+ddgs
+sqlalchemy[asyncio]    # [asyncio] pulls 'greenlet', required by Agno's SQLite layer
+python-dotenv
