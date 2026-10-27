@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block heading %}Employees{% endblock %}
+{% block content %}
+
+<div class="card">
+  <table class="table">
+    <tr><th>Name</th><th>Designation</th><th>Department</th><th>Joined</th><th>Salary / month</th><th>Leave</th><th>Notice</th></tr>
+    {% for e in employees %}
+    <tr>
+      <td><b>{{ e.name }}</b></td>
+      <td>{{ e.designation }}</td>
+      <td>{{ e.department }}</td>
+      <td>{{ e.date_of_joining }}</td>
+      <td>₹{{ "{:,.0f}".format(e.monthly_salary) }}</td>
+      <td>{{ e.leave_balance }} days</td>
+      <td>{{ e.notice_period_days }} days</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<!-- Add employee form: sends a POST to /employees (see main.py) -->
+<form class="card form" method="post" action="/employees">
+  <h3>Add employee</h3>
+  <div class="grid">
+    <label>Name<input name="name" required></label>
+    <label>Designation<input name="designation" required></label>
+    <label>Department<input name="department" required></label>
+    <label>Date of joining<input name="date_of_joining" type="date" required></label>
+    <label>Monthly salary (₹)<input name="monthly_salary" type="number" min="1" required></label>
+    <label>Leave balance (days)<input name="leave_balance" type="number" min="0" value="0"></label>
+    <label>Notice period (days)<input name="notice_period_days" type="number" min="0" value="60"></label>
+  </div>
+  <button class="btn" type="submit">Save employee</button>
+</form>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block heading %}Dashboard{% endblock %}
+{% block content %}
+
+<!-- How the crew works -->
+<div class="hero">
+  <span class="kicker">CrewAI · OpenAI · FastAPI</span>
+  <h2>Your AI HR team, working as one crew.</h2>
+  <div class="crew-map">
+    <div class="node manager">HR Manager<small>Orchestrator</small></div>
+    <div class="nodes">
+      <div class="node">HR Policy<small>Agent 1</small></div>
+      <div class="node">Payroll<small>Agent 2</small></div>
+      <div class="node">Compliance<small>Agent 3</small></div>
+      <div class="node">Documentation<small>Agent 4</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick question box: sends a POST to /ask (see main.py) -->
+<form class="card form ask-box" method="post" action="/ask">
+  <h3>💬 Ask HR anything</h3>
+  <div class="ask-row">
+    <input name="question" required placeholder="e.g. How many sick leaves do I have in a year?">
+    <button class="btn" type="submit">Ask →</button>
+  </div>
+</form>
+
+<div class="stats three">
+  <div class="stat"><span>Employees</span><b>{{ employees|length }}</b></div>
+  <div class="stat"><span>HR questions asked</span><b>{{ questions|length }}</b></div>
+  <div class="stat"><span>Resignation requests</span><b>{{ requests|length }}</b></div>
+</div>
+
+<div class="card">
+  <h3>Recent HR questions</h3>
+  {% if questions %}
+  <table class="table">
+    <tr><th>#</th><th>Question</th><th>Asked by</th><th>Status</th><th></th></tr>
+    {% for q in questions[:5] %}
+    <tr>
+      <td>{{ q.id }}</td>
+      <td>{{ q.question }}</td>
+      <td>{{ q.employee_name or "Anonymous" }}</td>
+      <td><span class="badge {{ q.status|lower }}">{{ q.status }}</span></td>
+      <td><a class="link" href="/questions/{{ q.id }}">Open →</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">No questions yet. <a class="link" href="/ask">Ask the first one →</a></p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h3>Resignation requests</h3>
+  {% if requests %}
+  <table class="table">
+    <tr><th>#</th><th>Employee</th><th>Department</th><th>Last working day</th><th>Status</th><th></th></tr>
+    {% for r in requests[:5] %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td><b>{{ r.employee_name }}</b></td>
+      <td>{{ r.department }}</td>
+      <td>{{ r.last_working_day }}</td>
+      <td><span class="badge {{ r.status|lower }}">{{ r.status }}</span></td>
+      <td><a class="link" href="/requests/{{ r.id }}">Open →</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">No resignation requests yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

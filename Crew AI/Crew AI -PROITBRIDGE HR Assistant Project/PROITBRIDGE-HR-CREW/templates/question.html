@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {% if q.status == "RUNNING" %}
+  <!-- While the crew is working, reload this page every 5 seconds -->
+  <meta http-equiv="refresh" content="5">
+  {% endif %}
+{% endblock %}
+
+{% block heading %}Question #{{ q.id }}{% endblock %}
+{% block content %}
+
+<div class="card question-card">
+  <span class="kicker">{{ q.employee_name or "Anonymous" }} asked</span>
+  <p class="question-text">“{{ q.question }}”</p>
+  <span class="badge {{ q.status|lower }}">{{ q.status }}</span>
+</div>
+
+{% if q.status == "RUNNING" %}
+  <div class="card working">
+    <div class="spinner"></div>
+    <div><b>The AI HR crew is working…</b><br>
+    <span class="muted">The HR Manager is deciding which specialist should answer. Watch the terminal to see the agents thinking.
+    This page refreshes automatically.</span></div>
+  </div>
+
+{% elif q.status == "FAILED" %}
+  <div class="card error"><b>Crew failed:</b> {{ q.error }}</div>
+
+{% else %}
+  <div class="card report">
+    <span class="kicker">HR answer</span>
+    {{ q.answer|markdown|safe }}
+  </div>
+{% endif %}
+
+<p><a class="btn" href="/ask">💬 Ask another question</a></p>
+{% endblock %}

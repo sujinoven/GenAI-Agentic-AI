@@ -1,0 +1,7 @@
+crewai==1.15.28         # multi-agent framework
+fastapi                 # web framework
+uvicorn[standard]       # runs the FastAPI app
+jinja2                  # HTML templates
+python-multipart        # reads HTML form data
+python-dotenv           # reads the .env file
+markdown                # shows the agents' Markdown answers as HTML
