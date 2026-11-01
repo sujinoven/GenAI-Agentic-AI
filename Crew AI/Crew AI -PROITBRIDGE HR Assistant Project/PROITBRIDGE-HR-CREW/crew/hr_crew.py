@@ -34,6 +34,7 @@ helpdesk_crew = Crew(
     process=Process.hierarchical,  # the manager decides who works on the question
     manager_agent=hr_manager,
     verbose=True,
+    tracing=True
 )
 
 # ---------------------------------------------------------------
@@ -45,6 +46,7 @@ resignation_crew = Crew(
     process=Process.hierarchical,
     manager_agent=hr_manager,      # the orchestrator (NOT in the agents list)
     verbose=True,
+    tracing = True
 )
 
 
