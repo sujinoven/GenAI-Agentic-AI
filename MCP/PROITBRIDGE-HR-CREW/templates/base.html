@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProITBridge HR Crew</title>
+  <link rel="icon" href="/static/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <!-- Left menu -->
+  <aside class="sidebar">
+    <a href="/" class="brand"><img src="/static/logo.png" alt="ProITBridge"></a>
+    <p class="brand-sub">AI HR Management</p>
+    <nav>
+      <a href="/ask" class="nav-cta">💬 Ask HR</a>
+      <a href="/">Dashboard</a>
+      <a href="/employees">Employees</a>
+      <a href="/resign">Resignation</a>
+    </nav>
+  </aside>
+
+  <!-- Page content -->
+  <main class="main">
+    <h1>{% block heading %}{% endblock %}</h1>
+    {% block content %}{% endblock %}
+    <footer>© ProITBridge · Strive For Better Future</footer>
+  </main>
+</body>
+</html>

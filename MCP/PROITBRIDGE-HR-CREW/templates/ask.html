@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block heading %}Ask HR{% endblock %}
+{% block content %}
+
+<!-- This form sends a POST to /ask → main.py starts the helpdesk crew -->
+<form class="card form" method="post" action="/ask">
+  <label>Who is asking? (optional — helps the agents personalise the answer)
+    <select name="employee_id">
+      <option value="">— Anonymous —</option>
+      {% for e in employees %}
+      <option value="{{ e.id }}">{{ e.name }} — {{ e.designation }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Your question
+    <textarea id="question" name="question" rows="4" required placeholder="Type any HR question: leave, WFH, salary, reimbursement, benefits, policies, resignation..."></textarea>
+  </label>
+
+  <p class="muted small">Try an example (click to use it):</p>
+  <div class="chips">
+    {% for ex in examples %}
+    <button type="button" class="chip" onclick="document.getElementById('question').value = this.textContent">{{ ex }}</button>
+    {% endfor %}
+  </div>
+
+  <button class="btn" type="submit">Ask the AI HR Crew →</button>
+  <p class="muted small">The HR Manager reads your question and asks the right specialist. Takes about 30–90 seconds.</p>
+</form>
+
+<div class="card">
+  <h3>Previous questions</h3>
+  {% if questions %}
+  <table class="table">
+    <tr><th>#</th><th>Question</th><th>Asked by</th><th>Status</th><th></th></tr>
+    {% for q in questions %}
+    <tr>
+      <td>{{ q.id }}</td>
+      <td>{{ q.question }}</td>
+      <td>{{ q.employee_name or "Anonymous" }}</td>
+      <td><span class="badge {{ q.status|lower }}">{{ q.status }}</span></td>
+      <td><a class="link" href="/questions/{{ q.id }}">Open →</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">No questions yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

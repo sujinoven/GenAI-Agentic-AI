@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block heading %}New resignation request{% endblock %}
+{% block content %}
+
+<!-- This form sends a POST to /resign → main.py starts the AI crew -->
+<form class="card form" method="post" action="/resign">
+  <label>Employee
+    <select name="employee_id" required>
+      {% for e in employees %}
+      <option value="{{ e.id }}">{{ e.name }} — {{ e.designation }} ({{ e.notice_period_days }}-day notice)</option>
+      {% endfor %}
+    </select>
+  </label>
+  <div class="grid">
+    <label>Resignation date<input type="date" name="resignation_date" value="{{ today }}" required></label>
+    <label>Requested last working day<input type="date" name="last_working_day" required></label>
+  </div>
+  <label>Reason for leaving<textarea name="reason" rows="3" required placeholder="e.g. Higher studies / better opportunity / relocation"></textarea></label>
+  <button class="btn" type="submit">Run AI HR Crew →</button>
+  <p class="muted">The 5 agents take about 1–3 minutes to finish.</p>
+</form>
+
+<div class="card">
+  <h3>Resignation requests</h3>
+  {% if requests %}
+  <table class="table">
+    <tr><th>#</th><th>Employee</th><th>Last working day</th><th>Status</th><th></th></tr>
+    {% for r in requests %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td><b>{{ r.employee_name }}</b></td>
+      <td>{{ r.last_working_day }}</td>
+      <td><span class="badge {{ r.status|lower }}">{{ r.status }}</span></td>
+      <td><a class="link" href="/requests/{{ r.id }}">Open →</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">No requests yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

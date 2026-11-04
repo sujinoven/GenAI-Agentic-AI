@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {% if req.status == "RUNNING" %}
+  <!-- While the crew is working, reload this page every 5 seconds -->
+  <meta http-equiv="refresh" content="5">
+  {% endif %}
+{% endblock %}
+
+{% block heading %}Request #{{ req.id }} · {{ req.employee_name }}{% endblock %}
+{% block content %}
+
+<div class="card info">
+  <div><span>Employee</span><b>{{ req.employee_name }}</b></div>
+  <div><span>Role</span><b>{{ req.designation }}, {{ req.department }}</b></div>
+  <div><span>Resigned on</span><b>{{ req.resignation_date }}</b></div>
+  <div><span>Last working day</span><b>{{ req.last_working_day }}</b></div>
+  <div><span>Status</span><b><span class="badge {{ req.status|lower }}">{{ req.status }}</span></b></div>
+</div>
+
+{% if req.status == "RUNNING" %}
+  <div class="card working">
+    <div class="spinner"></div>
+    <div><b>The AI crew is working…</b><br>
+    <span class="muted">HR Manager is delegating work to the Policy, Payroll, Compliance and Documentation agents.
+    Watch the terminal to see each agent thinking. This page refreshes automatically.</span></div>
+  </div>
+
+{% elif req.status == "FAILED" %}
+  <div class="card error"><b>Crew failed:</b> {{ req.error }}</div>
+
+{% else %}
+  <!-- Final answer (Task 4 — Documentation Agent) -->
+  <div class="card report">
+    <span class="kicker">Final HR response</span>
+    {{ req.final_report|markdown|safe }}
+  </div>
+
+  <!-- Each agent's own answer -->
+  <details class="card report"><summary>Agent 1 — HR Policy Specialist</summary>{{ req.policy|markdown|safe }}</details>
+  <details class="card report"><summary>Agent 2 — Payroll Specialist</summary>{{ req.payroll|markdown|safe }}</details>
+  <details class="card report"><summary>Agent 3 — Compliance Specialist</summary>{{ req.compliance|markdown|safe }}</details>
+{% endif %}
+{% endblock %}
