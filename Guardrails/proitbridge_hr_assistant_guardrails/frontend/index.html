@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROITBRIDGE HR Assistant · Guardrails</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<section id="signin" class="signin hidden">
+  <aside class="brand">
+    <div class="brand-plate"><img src="/static/logo.png" alt="PROITBRIDGE"></div>
+    <div class="brand-body">
+      <div class="brand-kicker">HR Assistant · Guardrails</div>
+      <h1 class="brand-title">Who is <span>asking?</span></h1>
+      <p class="brand-sub">Sign in as a demo user. The same HR Assistant answers differently for each role.</p>
+      <ol class="layers">
+        <li><span class="layer-num">1</span><div><b>Login</b><span>Who are you?</span></div></li>
+        <li><span class="layer-num">2</span><div><b>Access control</b><span>Which records can you reach?</span></div></li>
+        <li><span class="layer-num">3</span><div><b>Guardrails</b><span>Is the question and the answer safe?</span></div></li>
+      </ol>
+    </div>
+    <div class="brand-foot">Synthetic training data · not real employees</div>
+  </aside>
+  <main class="picker">
+    <div class="picker-head">
+      <div class="kicker">Demo sign-in</div>
+      <h2>Choose an account</h2>
+      <p>No passwords here. In a real company this step is your company login.</p>
+    </div>
+    <div id="user-grid" class="user-grid"></div>
+    <div id="signin-notice" class="notice hidden"></div>
+  </main>
+</section>
+
+<section id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="side-logo"><img src="/static/logo.png" alt="PROITBRIDGE"></div>
+    <nav class="nav">
+      <button class="nav-item" data-page="assistant">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Assistant</span>
+      </button>
+      <button class="nav-item" data-page="compare">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="16" rx="1.5"/><rect x="17" y="4" width="4" height="16" rx="1.5"/></svg><span>Role Compare</span>
+      </button>
+      <button class="nav-item" data-page="log">
+        <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12h6M9 15.5h4"/></svg><span>Guardrail Log</span>
+      </button>
+    </nav>
+    <div class="side-bottom">
+      <div class="side-label">Signed in as</div>
+      <div id="side-user" class="side-user"></div>
+      <button id="switch-user" class="ghost-btn">Switch user</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <img class="top-logo" src="/static/logo.png" alt="PROITBRIDGE">
+      <div class="top-text">
+        <div id="page-title" class="top-title">HR Assistant</div>
+        <div id="page-sub" class="top-sub"></div>
+      </div>
+      <div class="top-pills">
+        <span class="pill pill-sky"><i class="dot"></i>Guardrails on</span>
+      </div>
+    </header>
+
+    <div id="key-notice" class="banner hidden">OPENAI_API_KEY is missing. Add it to the .env file and restart the app.</div>
+
+    <section id="page-assistant" class="page page-assistant">
+      <div class="chat">
+        <div id="thread" class="thread"></div>
+        <div class="composer-wrap">
+          <form id="composer" class="composer">
+            <textarea id="question" rows="1" maxlength="600" placeholder="Ask an HR question…"></textarea>
+            <button id="send" class="send" type="submit" aria-label="Send">
+              <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+          <div class="composer-hint">Every question passes the input guard. Every answer passes the output guard.</div>
+        </div>
+      </div>
+      <aside id="inspector" class="inspector"></aside>
+    </section>
+
+    <section id="page-compare" class="page page-scroll hidden">
+      <div class="page-inner">
+        <div class="card compare-card">
+          <div class="kicker">Same question · every role</div>
+          <h3>One question, three users</h3>
+          <p class="muted">Ask once and see how login, access control and guardrails change the answer for each user. This is a classroom view that runs the question as all three demo users. A real HR app would not have this page.</p>
+          <form id="compare-form" class="compare-form">
+            <input id="compare-question" maxlength="600" placeholder="Type a question for all three users…">
+            <button class="primary-btn" type="submit">Ask all three</button>
+          </form>
+          <div id="compare-examples" class="chip-row"></div>
+        </div>
+        <div id="compare-grid" class="compare-grid"></div>
+      </div>
+    </section>
+
+    <section id="page-log" class="page page-scroll hidden">
+      <div class="page-inner">
+        <div id="log-kpis" class="kpis"></div>
+        <div class="card log-card">
+          <div class="log-head">
+            <div>
+              <div class="kicker">Audit trail</div>
+              <h3>Guardrail events</h3>
+              <p id="log-note" class="muted">Every question, who asked it and what the guards did. Only masked text is stored.</p>
+            </div>
+            <div class="log-actions">
+              <button id="log-refresh" class="ghost-btn">Refresh</button>
+              <button id="log-clear" class="ghost-btn danger">Clear log</button>
+            </div>
+          </div>
+          <div id="log-table" class="log-table"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="tabbar">
+    <button class="tab" data-page="assistant"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Assistant</span></button>
+    <button class="tab" data-page="compare"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="16" rx="1.5"/><rect x="17" y="4" width="4" height="16" rx="1.5"/></svg><span>Compare</span></button>
+    <button class="tab" data-page="log"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12h6M9 15.5h4"/></svg><span>Log</span></button>
+    <button id="tab-switch" class="tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-6.5 8-6.5s7 2 8 6.5"/></svg><span>Switch</span></button>
+  </nav>
+</section>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

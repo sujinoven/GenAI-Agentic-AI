@@ -1,0 +1,13 @@
+langchain
+langchain-core
+langchain-openai
+langchain-text-splitters
+pypdf
+guardrails-ai
+guardrails-ai-ban-list
+guardrails-ai-detect-pii
+guardrails-ai-valid-length
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
